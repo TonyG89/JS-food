@@ -1,0 +1,17 @@
+{
+  "name": "food",
+  "version": "1.0.0",
+  "main": "js/script.js",
+  "scripts": {
+    "start":"npx json-server --watch db.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "json-server": "^0.17.0"
+  },
+  "dependencies": {
+    "minireset.css": "^0.0.7"
+  },
+  "description": ""
+}
