@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
         tabsContent.forEach(item => {
             item.style.display = "none"
         })
+        
         tabs.forEach(item => {
             item.classList.remove('tabheader__item_active')
         })
@@ -181,7 +182,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const getResource = async (url) => { // постинг данных
+    const getResource = async (url) => { // постинг данных МОЖНО ЛИ ЗАКОМЕНТИРОВАТЬ?
         const res = await fetch(url)
 
         // ручная настройка кетчей(реджект) ошибки
@@ -204,7 +205,7 @@ window.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             data.data.forEach(({
                 img,
-                altimg,
+                altimg, 
                 title,
                 descr,
                 price
@@ -213,10 +214,10 @@ window.addEventListener('DOMContentLoaded', () => {
             })
         })
 
-    // // !!! верстка налету - ДОДЕЛАТ!!!
+    // // !!! верстка налету - ДОДЕЛАТ!!!ВРОДЕ ОК
     // getResource('http://localhost:3000/menu')
-    // .then(data=> craeteCard(data))
-    // function craeteCard(data){
+    // .then(data=> createCard(data))
+    // function createCard(data){
     //     data.forEach(({img, altimg, title, descr, price})=>{
     //         const element=document.createElement('div')
     //         element.innerHTML = `
@@ -233,9 +234,6 @@ window.addEventListener('DOMContentLoaded', () => {
     //     })
     // }
 
-
-
-
     // new MenuCard( //используется один раз
     //     "img/tabs/vegy.jpg",
     //     "vegy",
@@ -244,26 +242,6 @@ window.addEventListener('DOMContentLoaded', () => {
     //     7,
     //     '.menu .container',
 
-    // ).render()
-
-    // new MenuCard( //используется один раз
-    //     "img/tabs/elite.jpg",
-    //     "elite",
-    //     'Меню “Премиум”',
-    //     'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
-    //     18,
-    //     '.menu .container',
-    //     "menu__item"
-    // ).render()
-
-    // new MenuCard( //используется один раз
-    //     'img/tabs/post.jpg',
-    //     'post',
-    //     'Меню "Постное"',
-    //     'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
-    //     15,
-    //     '.menu .container',
-    //     "menu__item"
     // ).render()
 
     // Forms (НЕ РАБОТАЕТ!!!)
@@ -532,11 +510,17 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function deleteNotDigits(str){
+        return +str.replace(/\D/g, '')
+    }
+
+   
+
     dots.forEach(dot => {
         dot.addEventListener('click', (e) => {
             const slideTo = e.target.getAttribute('data-slide-to')
             slideIndex = slideTo
-            offset = +width.slice(0, width.length - 2) * (slideTo - 1)
+            offset = deleteNotDigits(width) * (slideTo - 1)
 
             slidesField.style.transform = `translateX(-${offset}px`
 
@@ -547,10 +531,10 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     next.addEventListener('click', () => {
-        if (offset == +width.slice(0, width.length - 2) * (slides.length - 1)) { // перевеодим переменную в числовой тип данный и вырезаем 2 последних символа в строке
+        if (offset == deleteNotDigits(width) * (slides.length - 1)) { // переводим переменную в числовой тип данный и вырезаем 2 последних символа в строке
             offset = 0
         } else {
-            offset += +width.slice(0, width.length - 2)
+            offset += deleteNotDigits(width)
         }
 
         slidesField.style.transform = `translateX(-${offset}px`
@@ -567,9 +551,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     prev.addEventListener('click', () => {
         if (offset == 0) {
-            offset = +width.slice(0, width.length - 2) * (slides.length - 1) // перевеодим переменную в числовой тип данный и вырезаем 2 последних символа в строке
+            offset = deleteNotDigits(width) * (slides.length - 1) // перевеодим переменную в числовой тип данный и вырезаем(slice(0, width.length - 2)) 2 последних символа в строке
         } else {
-            offset -= +width.slice(0, width.length - 2)
+            offset -= deleteNotDigits(width)
         }
 
         slidesField.style.transform = `translateX(-${offset}px`
