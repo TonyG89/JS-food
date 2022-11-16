@@ -2,6 +2,7 @@
 
 STACK: 
 - HTML
+- CSS
 - JS
   - FETCH
 - PHP
