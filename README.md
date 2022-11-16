@@ -1,4 +1,4 @@
-# JS-food-will-pushed
+# FOOD(broken. not all work)
 
 STACK: 
 - HTML
@@ -7,3 +7,5 @@ STACK:
 - PHP
 - JSON-SERVER
 - WEBPACK
+
+### [demo](https://okylistik.github.io/JS-food-will-pushed)
