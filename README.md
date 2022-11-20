@@ -9,4 +9,4 @@ STACK:
 - JSON-SERVER
 - WEBPACK
 
-### [demo](https://okylistik.github.io/JS-food-will-pushed)
+### [demo](https://tonyg89.github.io/JS-food-will-pushed/)
